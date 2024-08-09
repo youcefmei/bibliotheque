@@ -11,4 +11,12 @@ public class Customer extends User {
         this.mail = mail;
         this.dateRegister = dateRegister;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "mail='" + mail + '\'' +
+                ", dateRegister=" + dateRegister +
+                '}';
+    }
 }

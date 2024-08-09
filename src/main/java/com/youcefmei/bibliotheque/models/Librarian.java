@@ -14,6 +14,10 @@ public class Librarian extends User{
         return id;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Librarian{" +
+                "id=" + id +
+                '}';
+    }
 }

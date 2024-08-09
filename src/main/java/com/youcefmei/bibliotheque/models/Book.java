@@ -13,10 +13,10 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        return  title + " - " + author ;
     }
+
+
+
+
 }

@@ -1,6 +1,6 @@
 package com.youcefmei.bibliotheque.models;
 
-public class User {
+public abstract class User {
     private String firstName;
     private String lastName;
 
@@ -13,8 +13,15 @@ public class User {
         return firstName;
     }
 
-
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
