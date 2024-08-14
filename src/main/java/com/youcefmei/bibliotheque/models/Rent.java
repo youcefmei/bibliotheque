@@ -1,43 +1,48 @@
 package com.youcefmei.bibliotheque.models;
 
-import java.util.Date;
+import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
+import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
+import lombok.Getter;
+import lombok.NonNull;
+
+import java.time.LocalDate;
 
 public class Rent {
-//    private long id;
-    private Date dateBegin;
-    private Date dateEnd;
+    @Getter
+    private LocalDate dateBegin;
+    @Getter
+    private LocalDate dateEnd;
+    @Getter
     private Customer customer;
     private Book book;
+    @Getter
     private Librarian librarian;
+    private enum Status {
+      BORROWED,
+      RETURNED
+    };
+    private Status status;
 
 
-    public Rent(Date dateBegin, Customer customer, Book book, Librarian librarian) {
+    public Rent(LocalDate dateBegin, @NonNull Customer customer,@NonNull Book book,@NonNull Librarian librarian) throws NotEnoughQuantityException, InvalidInputException {
+        if ( (book != null) && (book.getQuantity() < 1 )){
+            throw new NotEnoughQuantityException("Il n y a pas assez d'exemplaire disponible");
+        }else{
+            book.bookBorrow();
+            this.book = book;
+            this.status = Status.BORROWED;
+        }
         this.dateBegin = dateBegin;
-        this.dateEnd =  new Date( dateBegin.getTime() + 7 * 24 * 60 * 60 * 1000 );
+        this.dateEnd =  LocalDate.ofEpochDay( dateBegin.toEpochDay() + 7 * 24 * 60 * 60 * 1_000 );
         this.customer = customer;
-        this.book = book;
         this.librarian = librarian;
     }
 
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public Date getDateEnd() {
-        return dateEnd;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public Book getBook() {
+    public Book getBook()  {
+        if ( (this.status == Status.BORROWED) && (  LocalDate.now().isAfter(this.getDateEnd())  )  ){
+            this.status = Status.RETURNED;
+            book.bookReturn();
+        }
         return book;
     }
-
-    public Librarian getLibrarian() {
-        return librarian;
-    }
-
-
 }

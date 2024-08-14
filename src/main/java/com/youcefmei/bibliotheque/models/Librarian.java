@@ -1,23 +1,26 @@
 package com.youcefmei.bibliotheque.models;
 
+import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
+import lombok.Getter;
+
+import java.util.UUID;
+
 public class Librarian extends User{
-    private static long total_id;
-    private long id;
+    @Getter
+    private String id;
 
-    public Librarian(String firstName, String lastName) {
+    public Librarian(String firstName, String lastName) throws InvalidInputException {
         super(firstName, lastName);
-        this.total_id++;
-        this.id = total_id;
+        this.id = UUID.randomUUID().toString();
     }
 
-    public long getId() {
-        return id;
-    }
 
     @Override
     public String toString() {
         return "Librarian{" +
-                "id=" + id +
+                "id=" + id  + ", " +
+                "firstName='" + this.getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
                 '}';
     }
 }
