@@ -16,6 +16,14 @@ public class Customer extends User {
     @Getter
     private String dateRegisterStr;
 
+
+    public Customer(String firstName, String lastName, String mail) throws InvalidInputException {
+        super(firstName, lastName);
+        setMail(mail);
+        setDateRegister (LocalDate.now() );
+    }
+
+
     public Customer(String firstName, String lastName, String mail, LocalDate dateRegister) throws InvalidInputException {
         super(firstName, lastName);
         setMail(mail);
@@ -51,10 +59,13 @@ public class Customer extends User {
         }
     }
 
+
     @Override
     public String toString() {
         return "Customer{" +
                 "mail='" + mail + '\'' +
+                ", firstname=" + getFirstName() +
+                ", lastname=" + getLastName() +
                 ", dateRegister=" + dateRegister +
                 '}';
     }

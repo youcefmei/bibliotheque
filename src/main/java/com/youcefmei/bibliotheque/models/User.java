@@ -4,6 +4,7 @@ import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import lombok.Getter;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
 
 @ToString
 @Getter
@@ -18,20 +19,20 @@ public abstract class User {
 
 
     public void setFirstName(String firstName) throws InvalidInputException {
-        if ( ( firstName != null ) && ( firstName.matches(
+        if ( ( firstName != null ) && ( !firstName.isBlank() ) && ( firstName.matches(
                 "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČ" +
                         "ŠŽ∂ð ,.'-]+$") )) {
-            this.firstName = StringUtils.capitalize(firstName.trim()) ;
+            this.firstName = WordUtils.capitalize(firstName.toLowerCase().trim()) ;
         }else{
             throw  new InvalidInputException("Veuillez saisir un prénom valide !");
         }
     }
 
     public void setLastName(String lastName) throws InvalidInputException {
-        if ( ( lastName != null ) && ( lastName.matches(
+        if ( ( lastName != null ) && ( !lastName.isBlank() ) && ( lastName.matches(
                 "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČ" +
                         "ŠŽ∂ð ,.'-]+$") )) {
-            this.lastName = StringUtils.capitalize(lastName.trim()) ;
+            this.lastName = WordUtils.capitalize(lastName.toLowerCase().trim()) ;
 
         }else{
             throw  new InvalidInputException("Veuillez saisir un nom valide ! ");

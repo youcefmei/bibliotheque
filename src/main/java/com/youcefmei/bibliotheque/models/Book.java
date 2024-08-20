@@ -56,6 +56,7 @@ public class Book {
     public void bookBorrow() throws InvalidInputException, NotEnoughQuantityException {
         if ( getQuantity()>0 ){
             setQuantity( getQuantity() -1 );
+
         }else{
             throw new NotEnoughQuantityException("Ce livre n'est pas disponible pour le moment");
         }
@@ -68,6 +69,7 @@ public class Book {
         }
         return false;
     }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,6 @@
-package com.youcefmei.bibliotheque.views;
+package com.youcefmei.bibliotheque.views.cli;
 
-import com.youcefmei.bibliotheque.controlers.Library;
-import com.youcefmei.bibliotheque.controlers.Main;
+import com.youcefmei.bibliotheque.manage.Library;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
 import com.youcefmei.bibliotheque.models.Book;
@@ -30,6 +29,9 @@ public class Menu {
         System.out.println("4) Afficher la liste des abonnées");
         System.out.println("5) Afficher la liste des livres");
         System.out.println("6) Afficher la liste des prêts");
+        System.out.println("7) Rechercher un livre");
+        System.out.println("8) Rechercher un utilisateur");
+
         System.out.println("q pour quitter");
 
 
@@ -52,6 +54,12 @@ public class Menu {
                 break;
             case "6":
                 displayRent();
+                break;
+            case "7":
+                searchBook();
+                break;
+            case "8":
+                searchCustomer();
                 break;
             case "q","Q":
                 System.exit(0);
@@ -121,47 +129,42 @@ public class Menu {
             rent = new Rent(LocalDate.now(), customer, book, librarian);
             Library.getInstance().getRents().add(rent);
             System.out.println(Library.getInstance().getBooks());
-
-
-//            Library.getInstance().getBooks().set(choiceBook,book);
-//            System.out.println(Library.getInstance().getBooks());
-
-
         } catch (NotEnoughQuantityException | InvalidInputException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
     private void displayCustomer() {
         List<Customer> customers = Library.getInstance().getCustomers();
-        for (Customer customer : customers) {
-            System.out.println(customer.toString());
+        if (customers.size() > 0) {
+            customers.forEach(customer -> System.out.println(customer.toString()));
+        } else {
+            System.out.println("Il n'y a pas d'utilisateur enregistré dans la librairie");
         }
-
     }
 
     private void displayBook() {
         List<Book> books = Library.getInstance().getBooks();
-        for (Book book : books) {
-            System.out.println(book.toString());
+        if (books.size() > 0) {
+            books.forEach(book -> System.out.println(book.toString()));
+        } else {
+            System.out.println("Il n'y a pas de livre dans la librairie");
         }
+
     }
 
     private void displayRent() {
         List<Rent> rents = Library.getInstance().getRents();
-        for (Rent rent : rents) {
-            System.out.println(rent.toString());
+        if (rents.size() > 0) {
+            rents.forEach(rent -> System.out.println(rent.toString()));
+        }else {
+
+            System.out.println("Il n'y a pas de prêt enregistré pour le moment");
         }
     }
 
-
-
     public void newCustomerMenu()  {
         String firstName, lastName,email,dateRegisterStr;
-
-
         System.out.println("Quel est le prénom ?");
         firstName = scanner.nextLine();
         System.out.println("Quel est le nom ?");
@@ -195,8 +198,7 @@ public class Menu {
 
         try {
             quantity = Integer.parseInt(quantityStr);
-            Book book1 = new Book(title,author,quantity);
-            Library.getInstance().getBooks().add(book1);
+            Library.getInstance().addBook(title, author, quantity);
         } catch (InvalidInputException | NumberFormatException e) {
             System.out.println(e.getMessage());
             newBookMenu();
@@ -204,10 +206,30 @@ public class Menu {
 
     }
 
+    public void searchCustomer(){
+        System.out.println("Quel est le nom de l'utilisateur ?");
+        String toSearch = scanner.nextLine();
+        List<Customer> customersFound = Library.getInstance().searchCustomer(toSearch);
+        if (!customersFound.isEmpty()) {
+            customersFound.forEach(System.out::println);
+
+        }else{
+            System.out.println("Il n'y pas d'utilisateur correspondant à cette recherche");
+        }
+    }
 
 
 
-
+    public void searchBook(){
+        System.out.println("Quel est le titre/auteur du livre ? ");
+        String toSearch = scanner.nextLine();
+        List<Book> booksFound = Library.getInstance().searchBook(toSearch);
+        if (!booksFound.isEmpty()) {
+            booksFound.forEach(System.out::println);
+        }else{
+            System.out.println("Il n'y pas de livre correspondant à cette recherche");
+        }
+    }
 
 
 

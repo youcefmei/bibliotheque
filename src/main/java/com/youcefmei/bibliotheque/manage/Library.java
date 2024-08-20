@@ -1,5 +1,6 @@
-package com.youcefmei.bibliotheque.controlers;
+package com.youcefmei.bibliotheque.manage;
 
+import com.youcefmei.bibliotheque.exceptions.DuplicateException;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import com.youcefmei.bibliotheque.models.Book;
 import com.youcefmei.bibliotheque.models.Customer;
@@ -9,6 +10,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Getter
 public class Library {
@@ -64,9 +66,9 @@ public class Library {
 
     private void initCustomer(){
         try {
-            Customer customer1 = new Customer("customerone","fnameone","customerone@gmaill.com","20-12-2017");
-            Customer customer2 = new Customer("customertwo","fnametwo","customertwo@gmaill.com","02-02-2019");
-            Customer customer3 = new Customer("customerthree","fnamethree","customerthree@gmaill.com","14-10-2022");
+            Customer customer1 = new Customer("customerone","fnameone","customerone@gmail.com","20-12-2017");
+            Customer customer2 = new Customer("customertwo","fnametwo","customertwo@gmail.com","02-02-2019");
+            Customer customer3 = new Customer("customerthree","fnamethree","customerthree@gmail.com","14-10-2022");
             customers.add(customer1);
             customers.add(customer2);
             customers.add(customer3);
@@ -75,6 +77,35 @@ public class Library {
         }
     }
 
+    public List<Book> searchBook(String toSearch) {
+        Stream<Book> bookStream = books.stream().filter(book -> book.getTitle().contains(toSearch));
+        return bookStream.toList();
+        // bookStream.forEach( book -> System.out.println(book.getTitle()));
+
+    }
+
+    public List<Customer> searchCustomer(String toSearch) {
+
+        Stream<Customer> customerStream = customers.stream().filter(customer -> customer.getMail().contains(toSearch));
+        return customerStream.toList();
+    }
+
+
+    public void addBook(String title, String author, int quantity) throws InvalidInputException {
+        Book book = new Book(title,author,quantity);
+        getBooks().add(book);
+
+    }
+
+    public void addCustomer(Customer customer) throws DuplicateException {
+        Stream<Customer> customerStream = customers.stream().filter(customerItem-> customerItem.getMail().equals(customer.getMail()) );
+
+        if (customerStream.count() != 0 ) {
+            throw new DuplicateException("Cette adresse mail est déja utilisé");
+        }else{
+            customers.add(customer);
+        }
+    }
 
 
 }
