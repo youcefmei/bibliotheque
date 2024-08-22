@@ -33,7 +33,8 @@ public class Rent {
             this.status = Status.BORROWED;
         }
         this.dateBegin = dateBegin;
-        this.dateEnd =  LocalDate.ofEpochDay( dateBegin.toEpochDay() + 7 * 24 * 60 * 60 * 1_000 );
+        this.dateEnd =  dateBegin.plusDays(7);
+//        this.dateEnd =  LocalDate.ofEpochDay( dateBegin.toEpochDay() + 7 * 24 * 60 * 60 * 1_000 );
         this.customer = customer;
         this.librarian = librarian;
     }

@@ -2,12 +2,14 @@ package com.youcefmei.bibliotheque.manage;
 
 import com.youcefmei.bibliotheque.exceptions.DuplicateException;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
+import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
 import com.youcefmei.bibliotheque.models.Book;
 import com.youcefmei.bibliotheque.models.Customer;
 import com.youcefmei.bibliotheque.models.Librarian;
 import com.youcefmei.bibliotheque.models.Rent;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -26,6 +28,7 @@ public class Library {
         initLibrarian();
         initCustomer();
         initBook();
+        initRent();
     }
 
     public static Library getInstance() {
@@ -77,6 +80,24 @@ public class Library {
         }
     }
 
+
+    public void initRent(){
+        try {
+            LocalDate dateBegin = LocalDate.now().plusDays(-1);
+            Customer customer = customers.get(0);
+            Librarian librarian = librarians.get(1);
+            Book book = books.get(5);
+            Rent rent = new Rent(dateBegin,customer,book,librarian);
+            Rent rent2 = new Rent(dateBegin.plusDays(-10),customers.get(1),books.get(6),librarians.get(0));
+            rents.add(rent);
+            rents.add(rent2);
+        } catch (NotEnoughQuantityException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public List<Book> searchBook(String toSearch) {
         Stream<Book> bookStream = books.stream().filter(book -> book.getTitle().contains(toSearch));
         return bookStream.toList();
@@ -91,9 +112,14 @@ public class Library {
     }
 
 
-    public void addBook(String title, String author, int quantity) throws InvalidInputException {
-        Book book = new Book(title,author,quantity);
-        getBooks().add(book);
+    public void addBook(Book book) throws DuplicateException {
+        Stream<Book> bookStream = books.stream().filter(bookItem-> ( bookItem.getTitle().equals(book.getTitle()) && bookItem.getAuthor().equals(book.getAuthor()) )   );
+
+        if (bookStream.count() != 0 ) {
+            throw new DuplicateException("Ce livre est déja dans la bibliotheque");
+        }else{
+            books.add(book);
+        }
 
     }
 

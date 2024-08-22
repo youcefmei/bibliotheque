@@ -1,5 +1,6 @@
 package com.youcefmei.bibliotheque.views.cli;
 
+import com.youcefmei.bibliotheque.exceptions.DuplicateException;
 import com.youcefmei.bibliotheque.manage.Library;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
@@ -198,8 +199,9 @@ public class Menu {
 
         try {
             quantity = Integer.parseInt(quantityStr);
-            Library.getInstance().addBook(title, author, quantity);
-        } catch (InvalidInputException | NumberFormatException e) {
+            Book book = new Book(title, author, quantity);
+            Library.getInstance().addBook(book);
+        } catch (InvalidInputException | NumberFormatException | DuplicateException e) {
             System.out.println(e.getMessage());
             newBookMenu();
         }

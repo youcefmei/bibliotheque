@@ -57,7 +57,7 @@
               <card name="Card1"/>
             </constraints>
             <properties>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
             <border type="none"/>
             <children>
@@ -135,7 +135,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="5a04a" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="5a04a" class="javax.swing.JTextField" binding="titleBookRegisterTextField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -151,7 +151,7 @@
                   <text value="Titre:"/>
                 </properties>
               </component>
-              <component id="99209" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+              <component id="99209" class="javax.swing.JTextField" binding="authorBookRegisterTextField">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -159,7 +159,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="6bb65" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+              <component id="6bb65" class="javax.swing.JSpinner" binding="quantityBookRegisterSpinner">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="80" height="-1"/>
@@ -184,7 +184,7 @@
                   <text value="Quantité:"/>
                 </properties>
               </component>
-              <component id="3fcfc" class="javax.swing.JButton" binding="effacerButton1" default-binding="true">
+              <component id="3fcfc" class="javax.swing.JButton" binding="clearBookRegisterButton">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -192,7 +192,7 @@
                   <text value="Effacer"/>
                 </properties>
               </component>
-              <component id="ddc9d" class="javax.swing.JButton" binding="validerButton1" default-binding="true">
+              <component id="ddc9d" class="javax.swing.JButton" binding="validBookRegisterButton">
                 <constraints>
                   <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -202,7 +202,7 @@
               </component>
             </children>
           </grid>
-          <grid id="1e489" binding="registerRentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="1e489" binding="registerRentPanel" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <card name="Card3"/>
@@ -210,17 +210,74 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="faadc" class="javax.swing.JLabel">
+              <scrollpane id="2484">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="4c50f" class="javax.swing.JTable" binding="tableRegisterRentTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="fd1f7" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Enregistrement d'un nouveau pret"/>
+                  <text value="Rechercher mail"/>
+                </properties>
+              </component>
+              <component id="6fb28" class="javax.swing.JTextField" binding="searchUserMailRentRegisterTextField">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="60da8" class="javax.swing.JComboBox" binding="comboUserMailRentRegisterComboBox">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="736c5" class="javax.swing.JButton" binding="validRentRegisterButton">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="valider"/>
+                </properties>
+              </component>
+              <component id="8c6f1" class="javax.swing.JButton" binding="clearRentRegisterButton">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="effacer"/>
+                </properties>
+              </component>
+              <component id="5ce53" class="javax.swing.JComboBox" binding="comboLibrarianIdRentRegisterComboBox">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="e2b3e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Bibliothecaire"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="fe7d6" binding="listUserPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="fe7d6" binding="listUserPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <card name="Card4"/>
@@ -228,14 +285,57 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="d1f6c" class="javax.swing.JLabel">
+              <grid id="99e8" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <text value="Liste des utilistateurs"/>
-                </properties>
-              </component>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2b45f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Rechercher"/>
+                    </properties>
+                  </component>
+                  <component id="a4db9" class="javax.swing.JTextField" binding="searchListUserTextField">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="6ba8f" class="javax.swing.JComboBox" binding="selectSearchListUserCombo">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <model>
+                        <item value="Nom"/>
+                        <item value="Prénom"/>
+                        <item value="Mail"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <scrollpane id="c445d">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="89138" class="javax.swing.JTable" binding="tableListUserTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
           <grid id="7f167" binding="listRentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -246,14 +346,19 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="edda7" class="javax.swing.JLabel">
+              <scrollpane id="645a8">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <text value="Liste des prets"/>
-                </properties>
-              </component>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="4011d" class="javax.swing.JTable" binding="tableListRentTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
           <grid id="8f5eb" binding="listBookPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -264,14 +369,68 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="4a587" class="javax.swing.JLabel">
+              <grid id="ee97c" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <text value="Liste des livres"/>
-                </properties>
-              </component>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="618ad" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Rechercher"/>
+                    </properties>
+                  </component>
+                  <component id="c1cdb" class="javax.swing.JTextField" binding="searchListBookTextField">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="30539" class="javax.swing.JComboBox" binding="selectSearchListBookCombo">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <model>
+                        <item value="Titre"/>
+                        <item value="Auteur"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <grid id="21a08" layout-manager="CardLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <scrollpane id="af5e">
+                        <constraints>
+                          <card name="Card1"/>
+                        </constraints>
+                        <properties>
+                          <horizontalScrollBarPolicy value="32"/>
+                          <verticalScrollBarPolicy value="22"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="9c1d1" class="javax.swing.JTable" binding="tableListBookTable">
+                            <constraints/>
+                            <properties/>
+                          </component>
+                        </children>
+                      </scrollpane>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
             </children>
           </grid>
         </children>

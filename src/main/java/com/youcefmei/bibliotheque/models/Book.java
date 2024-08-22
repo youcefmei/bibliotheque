@@ -23,7 +23,7 @@ public class Book {
         if (title != null && !title.isEmpty()  && !title.trim().isBlank() ){
             this.title = StringUtils.capitalize(title.trim());
         }else{
-            throw  new InvalidInputException("Veuillez saisir un nom valide ! ");
+            throw  new InvalidInputException("Veuillez saisir un titre valide ! ");
         }
 
     }
@@ -36,7 +36,7 @@ public class Book {
             this.author = StringUtils.capitalize(author.trim()) ;
 
         }else{
-            throw  new InvalidInputException("Veuillez saisir un nom valide ! ");
+            throw  new InvalidInputException("Veuillez saisir un nom d'auteur valide ! ");
         }
     }
 
@@ -45,7 +45,7 @@ public class Book {
         if (quantity >= 0){
             this.quantity = quantity;
         }else{
-            throw  new InvalidInputException("Ce n'est pas une quantité valide");
+            throw  new InvalidInputException("La quantité n'est pas valide");
         }
     }
 
