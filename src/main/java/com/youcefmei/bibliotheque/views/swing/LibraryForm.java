@@ -63,7 +63,6 @@ public class LibraryForm extends JFrame implements ItemListener {
 
     public LibraryForm() {
 
-
         setContentPane(contentPane);
         this.setTitle("Gestionnaire de Librairie ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,8 +99,8 @@ public class LibraryForm extends JFrame implements ItemListener {
 
         this.setVisible(true);
         pack();
+        setLocationRelativeTo(null);
     }
-
 
 
     private void handleRegisterUser() {
@@ -121,7 +120,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                 } catch (InvalidInputException | DuplicateException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Attention", JOptionPane.WARNING_MESSAGE);
                 }
-                System.out.println((library.getCustomers()));
+//                System.out.println((library.getCustomers()));
             }
         });
 
@@ -132,7 +131,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                 firstnameUserRegisterTextField.setText("");
                 lastnameUserRegisterTextField.setText("");
                 emailUserRegisterTextField.setText("");
-                System.out.println(("clearUserRegisterButton"));
+//                System.out.println(("clearUserRegisterButton"));
             }
         });
     }
@@ -150,7 +149,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                     Book book = new Book(title, author, quantity);
                     library.addBook(book);
                     JOptionPane.showMessageDialog(null, "Le livre a été ajouté");
-                    tableListBookTable.setModel(new BookListTableModel(searchListBookTextField.getText(),selectSearchListBookCombo.getSelectedItem().toString().toLowerCase()));
+                    tableListBookTable.setModel(new BookListTableModel(searchListBookTextField.getText(), selectSearchListBookCombo.getSelectedItem().toString().toLowerCase()));
                     BookRentTableModel bookRentTableModel = new BookRentTableModel();
                     tableRegisterRentTable.setModel(bookRentTableModel);
                 } catch (InvalidInputException | DuplicateException ex) {
@@ -166,7 +165,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                 titleBookRegisterTextField.setText("");
                 authorBookRegisterTextField.setText("");
                 quantityBookRegisterSpinner.setValue(1);
-                System.out.println(("clearUserRegisterButton"));
+//                System.out.println(("clearUserRegisterButton"));
             }
         });
     }
@@ -212,13 +211,13 @@ public class LibraryForm extends JFrame implements ItemListener {
 
         });
 
-        selectSearchListBookCombo.addActionListener( new ActionListener() {
+        selectSearchListBookCombo.addActionListener(new ActionListener() {
 
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                populateListBookTable();
-             }
-         }
+                                                        @Override
+                                                        public void actionPerformed(ActionEvent e) {
+                                                            populateListBookTable();
+                                                        }
+                                                    }
 
         );
     }
@@ -244,19 +243,19 @@ public class LibraryForm extends JFrame implements ItemListener {
 
         });
 
-        selectSearchListUserCombo.addActionListener( new ActionListener() {
+        selectSearchListUserCombo.addActionListener(new ActionListener() {
 
-         @Override
-         public void actionPerformed(ActionEvent e) {
-             populateListUserTable();
-         }
-     }
+                                                        @Override
+                                                        public void actionPerformed(ActionEvent e) {
+                                                            populateListUserTable();
+                                                        }
+                                                    }
 
         );
     }
 
 
-    public void handleRentRegister(){
+    public void handleRentRegister() {
         validRentRegisterButton.addActionListener(new ActionListener() {
 
             @Override
@@ -265,7 +264,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                 BookRentTableModel bookRegisterRentModel = (BookRentTableModel) tableRegisterRentTable.getModel();
                 Customer customer = library.getCustomers().stream().filter(
                         customerTemp -> customerTemp.getMail().equals(
-                            comboUserMailRentRegisterComboBox.getSelectedItem().toString()
+                                comboUserMailRentRegisterComboBox.getSelectedItem().toString()
                         )
                 ).findFirst().orElse(null);
 
@@ -278,7 +277,7 @@ public class LibraryForm extends JFrame implements ItemListener {
                 bookRegisterRentModel.getBooksToRent().forEach(
                         book -> {
                             try {
-                                Rent rent = new Rent(LocalDate.now(),customer,book,librarian);
+                                Rent rent = new Rent(LocalDate.now(), customer, book, librarian);
                                 library.getRents().add(rent);
                                 JOptionPane.showMessageDialog(null, "Le prêt a été enregistré");
                                 populateListRentTable();
@@ -296,25 +295,24 @@ public class LibraryForm extends JFrame implements ItemListener {
     }
 
 
-
-    private void populateListBookTable()  {
+    private void populateListBookTable() {
 //        try {
-        BookListTableModel bookListTableModel = new BookListTableModel(searchListBookTextField.getText(),selectSearchListBookCombo.getSelectedItem().toString().toLowerCase());
-            tableListBookTable.setModel(bookListTableModel);
+        BookListTableModel bookListTableModel = new BookListTableModel(searchListBookTextField.getText(), selectSearchListBookCombo.getSelectedItem().toString().toLowerCase());
+        tableListBookTable.setModel(bookListTableModel);
 //        } catch (InvalidInputException ex) {
 //            throw new RuntimeException(ex);
 //        }
     }
 
-    private void populateListUserTable()  {
-        UserTableModel userTableModel = new UserTableModel(searchListUserTextField.getText(),selectSearchListUserCombo.getSelectedItem().toString().toLowerCase());
+    private void populateListUserTable() {
+        UserTableModel userTableModel = new UserTableModel(searchListUserTextField.getText(), selectSearchListUserCombo.getSelectedItem().toString().toLowerCase());
         tableListUserTable.setModel(userTableModel);
     }
 
     private void populateListRentTable() {
-        RentTableModel rentTableModel =  new RentTableModel();
+        RentTableModel rentTableModel = new RentTableModel();
 
-        System.out.println(rentTableModel.getRowCount());
+//        System.out.println(rentTableModel.getRowCount());
 
         tableListRentTable.setModel(rentTableModel);
     }
