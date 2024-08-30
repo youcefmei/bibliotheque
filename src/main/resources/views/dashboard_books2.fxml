@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="629.0" prefWidth="808.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.youcefmei.bibliotheque.views.javafx.controllers.BookController">
+         <children>
+            <AnchorPane fx:id="billing_pane" layoutX="-1.0" layoutY="55.0" prefHeight="639.0" prefWidth="820.0" stylesheets="@dashboard.css">
+               <children>
+                  <TableView fx:id="bookTable" layoutX="13.0" layoutY="59.0" prefHeight="280.0" prefWidth="794.0" stylesheets="@dashboard.css">
+                    <columns>
+                        <TableColumn fx:id="bookTitleCol" prefWidth="254.4000244140625" text="Titre" />
+                        <TableColumn fx:id="bookAuthorCol" prefWidth="324.0" text="Auteur" />
+                        <TableColumn fx:id="bookQuantityCol" prefWidth="214.0" text="Quantité" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="bookSearchTextField" layoutX="12.0" layoutY="13.0" onKeyTyped="#handleSearchBook" prefHeight="36.0" prefWidth="236.0" promptText="Rechercher" styleClass="search-billing" stylesheets="@dashboard.css" />
+                  
+                  <Separator layoutX="13.0" layoutY="342.0" prefHeight="10.0" prefWidth="794.0" />
+                  <TextField fx:id="bookTitleTextField" layoutX="414.0" layoutY="389.0" promptText="Entrez le titre" styleClass="textfield" stylesheets="@dashboard.css" />
+                  <TextField fx:id="bookAuthorTextField" layoutX="414.0" layoutY="437.0" promptText="Entrez l'auteur" styleClass="textfield" stylesheets="@dashboard.css" />
+                  <Label layoutX="291.0" layoutY="389.0" prefHeight="32.0" prefWidth="83.0" text="Titre:">
+                     <font>
+                        <Font name="Dubai Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="291.0" layoutY="437.0" prefHeight="32.0" prefWidth="101.0" text="Auteur:">
+                     <font>
+                        <Font name="Dubai Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="291.0" layoutY="488.0" prefHeight="32.0" prefWidth="102.0" text="Quantité:">
+                     <font>
+                        <Font name="Dubai Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="bookClearButton" layoutX="303.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleClearBook" prefHeight="38.0" prefWidth="115.0" styleClass="clear" stylesheets="@dashboard.css" text="Effacer">
+                     
+                        
+                     
+                     <font>
+                        <Font name="Dubai Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="bookRegisterButton" alignment="CENTER" layoutX="428.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleRegisterBook" prefHeight="39.0" prefWidth="102.0" styleClass="add" stylesheets="@dashboard.css" text="Enregistrer">
+                     
+                        
+                     
+                     <font>
+                        <Font name="Dubai Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="290.0" layoutY="352.0" prefHeight="32.0" prefWidth="115.0" text="Enregistrement :">
+                     <font>
+                        <Font name="Dubai Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="inv_num" layoutX="151.0" layoutY="352.0" prefHeight="32.0" prefWidth="102.0" />
+                  <ComboBox fx:id="bookTitleAuthorCombo" layoutX="261.0" layoutY="14.0" onAction="#handleFilterSelectedBook" prefHeight="32.0" prefWidth="156.0" styleClass="clear" />
+                  <Button fx:id="bookDeleteButton" layoutX="705.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleDeleteBook" prefHeight="10.0" prefWidth="101.0" styleClass="clear" stylesheets="@dashboard.css" text="Supprimer">
+                     
+                        
+                     
+                     <font>
+                        <Font name="Dubai Bold" size="16.0" />
+                     </font>
+                  </Button>
+            <Spinner fx:id="bookQuantitySpinner" layoutX="413.0" layoutY="492.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>

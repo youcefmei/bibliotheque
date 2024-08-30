@@ -8,6 +8,7 @@ import com.youcefmei.bibliotheque.models.Customer;
 import com.youcefmei.bibliotheque.models.Librarian;
 import com.youcefmei.bibliotheque.models.Rent;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public class Library {
     private List<Book> books = new ArrayList<>();
     private List<Customer> customers = new ArrayList<>();
     private List<Rent> rents = new ArrayList<>();
+    @Getter @Setter
+    private Librarian currentLibrarian;
+//    @Getter @Setter
+//    private Librarian librarian;
 
 
     private Library() {
@@ -29,6 +34,9 @@ public class Library {
         initCustomer();
         initBook();
         initRent();
+        if (librarians.size() > 0){
+            currentLibrarian = librarians.get(0);
+        }
     }
 
     public static Library getInstance() {

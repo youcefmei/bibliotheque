@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="629.0" prefWidth="808.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.youcefmei.bibliotheque.views.javafx.controllers.RentRegisterController">
+         <children>
+            <AnchorPane fx:id="billing_pane" layoutX="-1.0" layoutY="55.0" prefHeight="639.0" prefWidth="820.0" stylesheets="@dashboard.css">
+               <children>
+                  <TextField fx:id="mailSearchTextField" layoutX="12.0" layoutY="23.0" onKeyTyped="#handleSearchCustomer" prefHeight="36.0" prefWidth="236.0" promptText="Rechercher un mail abonné" styleClass="search-billing" stylesheets="@dashboard.css" />
+                  <ComboBox fx:id="mailCombo" layoutX="258.0" layoutY="25.0" onAction="#handleFilterSelectedCustomer" prefHeight="32.0" prefWidth="206.0" styleClass="clear" />
+                  <TableView fx:id="bookTable" layoutX="13.0" layoutY="136.0" prefHeight="390.0" prefWidth="794.0" stylesheets="@dashboard.css">
+                    <columns>
+                        <TableColumn fx:id="bookTitleCol" prefWidth="361.0" text="Titre" />
+                        <TableColumn fx:id="bookAuthorCol" prefWidth="432.0" text="Auteur" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="bookSearchTextField" layoutX="12.0" layoutY="81.0" onKeyTyped="#handleSearchBook" prefHeight="36.0" prefWidth="236.0" promptText="Rechercher un livre" styleClass="search-billing" stylesheets="@dashboard.css" />
+                  
+                  <Separator layoutX="13.0" layoutY="542.0" prefHeight="10.0" prefWidth="794.0" />
+                  <Button fx:id="rentClearButton" layoutX="303.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleClearBook" prefHeight="38.0" prefWidth="115.0" styleClass="clear" stylesheets="@dashboard.css" text="Effacer">
+                     
+                        
+                     
+                     <font>
+                        <Font name="Dubai Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="rentRegisterButton" alignment="CENTER" layoutX="428.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleRegisterRent" prefHeight="39.0" prefWidth="102.0" styleClass="add" stylesheets="@dashboard.css" text="Enregistrer">
+                     
+                        
+                     
+                     <font>
+                        <Font name="Dubai Bold" size="16.0" />
+                     </font>
+                  </Button>
+            <ComboBox fx:id="bookTitleAuthorCombo" layoutX="262.0" layoutY="83.0" onAction="#handleFilterSelectedBook" prefHeight="32.0" prefWidth="156.0" styleClass="clear" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>

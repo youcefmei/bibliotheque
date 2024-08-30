@@ -15,12 +15,19 @@ public class Librarian extends User{
     }
 
 
+//    @Override
+//    public String toString() {
+//        return "Librarian{" +
+//                "id=" + id  + ", " +
+//                "firstName='" + this.getFirstName() + '\'' +
+//                ", lastName='" + getLastName() + '\'' +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
-        return "Librarian{" +
-                "id=" + id  + ", " +
-                "firstName='" + this.getFirstName() + '\'' +
-                ", lastName='" + getLastName() + '\'' +
-                '}';
+        return id ;
     }
+
 }

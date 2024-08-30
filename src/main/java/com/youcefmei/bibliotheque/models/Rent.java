@@ -23,7 +23,6 @@ public class Rent {
     };
     private Status status;
 
-
     public Rent(LocalDate dateBegin, @NonNull Customer customer,@NonNull Book book,@NonNull Librarian librarian) throws NotEnoughQuantityException, InvalidInputException {
         if ( (book != null) && (book.getQuantity() < 1 )){
             throw new NotEnoughQuantityException("Il n y a pas assez d'exemplaire disponible");

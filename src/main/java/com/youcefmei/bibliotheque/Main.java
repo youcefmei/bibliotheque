@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -99,11 +100,19 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/MainView.fxml")));
-        Scene scene = new Scene(root);
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard_left_librarian2.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard_left_librarian_users2.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard_left.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard_main.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard2.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/dashboard.fxml")));
 
-        stage.setTitle("Hanoi");
+        Scene scene = new Scene(root);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
+
+        stage.setTitle("Bibliotheque");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
     }

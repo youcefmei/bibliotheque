@@ -3,6 +3,7 @@ package com.youcefmei.bibliotheque.models;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 public class Book {
@@ -12,6 +13,8 @@ public class Book {
     private String author;
     @Getter
     private int quantity;
+
+
 
     public Book(String title, String author, int quantity) throws InvalidInputException {
         setTitle(title);
@@ -28,8 +31,7 @@ public class Book {
 
     }
 
-
-    private void setAuthor(String author) throws InvalidInputException {
+    public void setAuthor(String author) throws InvalidInputException {
         if ( ( author != null ) && ( author.matches(
                 "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČ" +
                         "ŠŽ∂ð ,.'-]+$") )) {
@@ -48,6 +50,7 @@ public class Book {
             throw  new InvalidInputException("La quantité n'est pas valide");
         }
     }
+
 
     public void bookReturn() {
         this.quantity++;
@@ -80,9 +83,5 @@ public class Book {
                 '}';
 
     }
-
-
-
-
 
 }

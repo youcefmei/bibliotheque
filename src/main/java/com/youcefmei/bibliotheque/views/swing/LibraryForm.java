@@ -1,4 +1,5 @@
 package com.youcefmei.bibliotheque.views.swing;
+
 import com.youcefmei.bibliotheque.exceptions.DuplicateException;
 import com.youcefmei.bibliotheque.exceptions.InvalidInputException;
 import com.youcefmei.bibliotheque.exceptions.NotEnoughQuantityException;
@@ -131,7 +132,6 @@ public class LibraryForm extends JFrame implements ItemListener {
                 firstnameUserRegisterTextField.setText("");
                 lastnameUserRegisterTextField.setText("");
                 emailUserRegisterTextField.setText("");
-//                System.out.println(("clearUserRegisterButton"));
             }
         });
     }
@@ -199,7 +199,6 @@ public class LibraryForm extends JFrame implements ItemListener {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
             }
 
             @Override
@@ -207,17 +206,14 @@ public class LibraryForm extends JFrame implements ItemListener {
 
                 populateListBookTable();
             }
-
-
         });
 
         selectSearchListBookCombo.addActionListener(new ActionListener() {
-
-                                                        @Override
-                                                        public void actionPerformed(ActionEvent e) {
-                                                            populateListBookTable();
-                                                        }
-                                                    }
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    populateListBookTable();
+                }
+            }
 
         );
     }
@@ -244,13 +240,11 @@ public class LibraryForm extends JFrame implements ItemListener {
         });
 
         selectSearchListUserCombo.addActionListener(new ActionListener() {
-
-                                                        @Override
-                                                        public void actionPerformed(ActionEvent e) {
-                                                            populateListUserTable();
-                                                        }
-                                                    }
-
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    populateListUserTable();
+                }
+            }
         );
     }
 
@@ -296,12 +290,8 @@ public class LibraryForm extends JFrame implements ItemListener {
 
 
     private void populateListBookTable() {
-//        try {
         BookListTableModel bookListTableModel = new BookListTableModel(searchListBookTextField.getText(), selectSearchListBookCombo.getSelectedItem().toString().toLowerCase());
         tableListBookTable.setModel(bookListTableModel);
-//        } catch (InvalidInputException ex) {
-//            throw new RuntimeException(ex);
-//        }
     }
 
     private void populateListUserTable() {
@@ -311,9 +301,6 @@ public class LibraryForm extends JFrame implements ItemListener {
 
     private void populateListRentTable() {
         RentTableModel rentTableModel = new RentTableModel();
-
-//        System.out.println(rentTableModel.getRowCount());
-
         tableListRentTable.setModel(rentTableModel);
     }
 
